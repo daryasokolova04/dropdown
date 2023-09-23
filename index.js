@@ -41,11 +41,7 @@ class CustomSelect {
         this.#mainDropdown.append(this.#dropdownButton, this.#list)
 
         this.#dropdownButton.addEventListener('click', () => {
-            if (this.#list.classList.contains('active')) {
-                this.#list.classList.remove('active')
-            } else {
-                this.#list.classList.add('active')
-            }
+            this.#list.classList.toggle('active')
         })
 
         this.#list.addEventListener('click', (event) => {
@@ -58,6 +54,7 @@ class CustomSelect {
                 let selectedOption = document.querySelector(`[data-value="${this.#currentSelectedOption}"`)
                 selectedOption.classList.add('selected')
                 this.#dropdownButton.textContent = selectedOption.textContent
+                this.#list.classList.remove('active')
             }
         })
     }
